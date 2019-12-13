@@ -33,15 +33,15 @@ node {
             }
         }
 
-        stage('frontend tests') {
-            try {
-                sh "./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'"
-            } catch(err) {
-                throw err
-            } finally {
-                junit '**/target/test-results/TESTS-*.xml'
-            }
-        }
+       // stage('frontend tests') {
+         //   try {
+           //     sh "./mvnw com.github.eirslett:frontend-maven-plugin:npm -Dfrontend.npm.arguments='run test'"
+           // } catch(err) {
+            //    throw err
+           // } finally {
+             //   junit '**/target/test-results/TESTS-*.xml'
+           // }
+       // } 
  
         stage('packaging') {
             sh "./mvnw verify -Pprod -DskipTests"
