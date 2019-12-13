@@ -42,10 +42,15 @@ node {
                 junit '**/target/test-results/TESTS-*.xml'
             }
         }
-
+ 
         stage('packaging') {
             sh "./mvnw verify -Pprod -DskipTests"
             archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
+        }
+        stage('quality analysis') {
+            withSonarQubeEnv('sonar') {
+                sh "./mvnw sonarqube:9000"
+            }
         }
     }
 
