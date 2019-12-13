@@ -48,8 +48,8 @@ node {
             archiveArtifacts artifacts: '**/target/*.war', fingerprint: true
         }
         stage('quality analysis') {
-            withSonarQubeEnv('sonar') {
-                sh "./mvnw sonarqube:9000"
+            withSonarQubeEnv('sonarqube') {
+                sh "./mvnw sonar:sonar"
             }
         }
     }
